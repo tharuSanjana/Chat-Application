@@ -281,46 +281,6 @@ public class ClientFormController extends Thread {
     }
 
     private void sendImage(String msgToSend) {
-      /*  Image image = new Image(msgToSend);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(200);
-        imageView.setFitWidth(200);
-//        TextFlow textFlow = new TextFlow(imageView);
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(5, 5, 5, 10));
-        hBox.getChildren().add(imageView);
-        hBox.setAlignment(Pos.CENTER_RIGHT);
-
-        VBox.getChildren().add(hBox);
-
-        try {
-            dataOutputStream.writeUTF(lblClientName + "-" + msgToSend);
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-       /* File file = new File(msgToSend);
-        String imageUrl = file.toURI().toString(); // Convert file path to a URL string
-        Image image = new Image(imageUrl);
-
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(200);
-        imageView.setFitWidth(200);
-
-        HBox hBox = new HBox();
-        hBox.setPadding(new Insets(5, 5, 5, 10));
-        hBox.getChildren().add(imageView);
-        hBox.setAlignment(Pos.CENTER_RIGHT);
-
-        VBox.getChildren().add(hBox);
-
-        try {
-            dataOutputStream.writeUTF(lblClientName.getText() + "-" + imageUrl); // Sending the URL, not the file path
-            dataOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
 
         File file = new File(msgToSend);
         String imageUrl = file.toURI().toString(); // Convert file path to a URL string

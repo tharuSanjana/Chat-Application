@@ -29,38 +29,6 @@ public class LoginController {
         stage.setTitle(txtName.getText());
         stage.show();
         txtName.clear();
-       /* String userName = txtName.getText().trim();
-        Stage newStage = new Stage();
-        newStage.setTitle(userName);
-        // Add content to the new window
-        BorderPane newRoot = new BorderPane();
-        newStage.setScene(new Scene(newRoot, 600, 600));
-        txtName.clear();
-
-        // Show the new window
-        newStage.show();*/
-
-     /*  if (!txtName.getText().isEmpty()&&txtName.getText().matches("[A-Za-z0-9]+")){
-            Stage primaryStage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/client.fxml"));
-
-            ClientFormController controller = new ClientFormController();
-            controller.setClientName(txtName.getText()); // Set the parameter
-            //fxmlLoader.setController(controller);
-
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-            primaryStage.setTitle(txtName.getText());
-            primaryStage.setResizable(false);
-            primaryStage.centerOnScreen();
-            primaryStage.setOnCloseRequest(windowEvent -> {
-                //controller.shutdown();
-            });
-            primaryStage.show();
-
-            txtName.clear();
-        }else{
-            new Alert(Alert.AlertType.ERROR, "Please enter your name").show();
-        }*/
 
     }
 
