@@ -16,7 +16,6 @@ public class LoginController {
     private Button login;
     @FXML
     private TextField txtName;
-   // private String username;
 
     public void initialize(){
 

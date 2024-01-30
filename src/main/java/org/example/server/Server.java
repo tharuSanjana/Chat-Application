@@ -15,16 +15,15 @@ public class Server {
         ArrayList<Client> clientSet = new ArrayList<>();
         ServerSocket serverSocket = new ServerSocket(3000);
         Socket socket;
-       // int index = 1;
+
         while (true) {
             System.out.println("Waiting for Client ...");
             socket = serverSocket.accept();
-           // System.out.println("Client " + index + " Connected");
+
             System.out.println("Client connected");
             Client client = new Client(socket, clientSet);
             clientSet.add(client);
-            //client.start();
-           // index++;
+
         }
     }
 
