@@ -75,6 +75,7 @@ public class ClientFormController extends Thread {
     private GridPane emojiGridpane;
     @FXML
     private ScrollPane scrollPane;
+   // HBox hBoxTime = new HBox();
 
     public void initialize() {
         lblClientName.setText(LoginController.userName);
@@ -135,8 +136,6 @@ public class ClientFormController extends Thread {
 
     private void sendMsg(String msgToSend) throws IOException {
 
-
-
         if (!msgToSend.isEmpty()) {
             if (!msgToSend.matches(".*\\.(png|jpe?g|gif)$")) {
 
@@ -182,33 +181,39 @@ public class ClientFormController extends Thread {
     public static void receiveMessage(String msg, VBox vBox) throws IOException {
 
         String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
-
         if (msg.matches(".*\\.(png|jpe?g|gif)$")) {
             // Handling image messages
-            // Code to display images goes here
-            HBox hBoxName = new HBox();
-            hBoxName.setAlignment(Pos.CENTER_LEFT);
-            Text textName = new Text(msg.split("[-]")[0]);
-            TextFlow textFlowName = new TextFlow(textName);
-            hBoxName.getChildren().add(textFlowName);
+            String senderName = msg.split("[-]")[0]; // Extract sender's name
+            String imageUrl = msg.split("[-]")[1];   // Extract image URL
+            String stringTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
 
-            Image image = new Image(msg.split("[-]")[1]);
+            // Create sender's name display
+            Text senderText = new Text(senderName);
+            TextFlow senderFlow = new TextFlow(senderText);
+            HBox senderBox = new HBox(senderFlow);
+            senderBox.setAlignment(Pos.CENTER_RIGHT);
+
+            // Create time display
+            Text timeText = new Text(stringTime);
+            timeText.setStyle("-fx-font-size: 8");
+            HBox timeBox = new HBox(timeText);
+            timeBox.setAlignment(Pos.CENTER_RIGHT);
+
+            // Create image view
+            Image image = new Image(imageUrl);
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(200);
             imageView.setFitWidth(200);
+
+            // Create HBox for image and add sender's name and time
             HBox hBox = new HBox();
             hBox.setAlignment(Pos.CENTER_LEFT);
+            hBox.setSpacing(10); // Add spacing between image and sender's name/time
             hBox.setPadding(new Insets(5, 5, 5, 10));
-            hBox.getChildren().add(imageView);
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    vBox.getChildren().add(hBoxName);
-                    vBox.getChildren().add(hBox);
-                }
-            });
+            hBox.getChildren().addAll(imageView, senderBox, timeBox);
 
-
+            // Add the HBox to the VBox
+            Platform.runLater(() -> vBox.getChildren().add(hBox));
         } else {
             // Handling text messages
             String name = msg.split("-")[0];
@@ -245,6 +250,7 @@ public class ClientFormController extends Thread {
                 vBox.getChildren().add(hBox);
             });
         }
+
     }
 
     @FXML
@@ -294,7 +300,6 @@ public class ClientFormController extends Thread {
         hBox.setPadding(new Insets(5, 5, 5, 10));
         hBox.getChildren().add(imageView);
         hBox.setAlignment(Pos.CENTER_RIGHT);
-
         VBox.getChildren().add(hBox);
 
         try {

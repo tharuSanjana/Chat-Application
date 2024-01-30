@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Server {
     public static void server() throws IOException {
-        ArrayList<Client> clientSet = new ArrayList<>();
+        ArrayList<Client> clients = new ArrayList<>();
         ServerSocket serverSocket = new ServerSocket(3000);
         Socket socket;
 
@@ -21,12 +21,11 @@ public class Server {
             socket = serverSocket.accept();
 
             System.out.println("Client connected");
-            Client client = new Client(socket, clientSet);
-            clientSet.add(client);
+            Client client = new Client(socket, clients);
+            clients.add(client);
 
         }
     }
-
 }
 
 

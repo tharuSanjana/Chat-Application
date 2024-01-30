@@ -10,8 +10,7 @@ public class Client {
     private List<Client> clients;
     private DataInputStream dataInputStream ;
     private DataOutputStream dataOutputStream;
-    private BufferedReader reader;
-    private PrintWriter writer;
+
 
     private String msg = "";
 
@@ -43,6 +42,5 @@ public class Client {
             }
         }).start();
     }
-
 }
 
